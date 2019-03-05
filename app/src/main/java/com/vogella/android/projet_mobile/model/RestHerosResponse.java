@@ -6,7 +6,7 @@ public class RestHerosResponse {
     private int count;
     private String next;
     private String previous;
-    private List<Hero> results;
+    private List<Hero> results;  //faux changer results
 
     public int getCount() {
         return count;
