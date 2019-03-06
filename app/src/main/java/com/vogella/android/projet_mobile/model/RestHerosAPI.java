@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface RestHerosAPI {
-    @GET("get_heros")
+    @GET("get_heros?limit=100")
     Call<RestHerosResponse> getListHeros();
 }
