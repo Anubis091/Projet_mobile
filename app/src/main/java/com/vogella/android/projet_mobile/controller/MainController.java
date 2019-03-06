@@ -30,7 +30,7 @@ public class MainController {
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://menfoutiste.000webhostapp.com/api/get_heros/")
+                .baseUrl("http://menfoutiste.000webhostapp.com/api/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 

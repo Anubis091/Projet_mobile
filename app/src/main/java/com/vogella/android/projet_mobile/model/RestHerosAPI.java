@@ -7,6 +7,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface RestHerosAPI {
-    @GET("changes/")
-    Call<RestHerosResponse>getListHeros();
+    @GET("get_heros")
+    Call<RestHerosResponse> getListHeros();
 }
