@@ -8,19 +8,19 @@ public class Caracteristique {
 
     private String role;
 
-    private String img;
+    private String image;
 
-    private String img_min;
+    private String image_min;
 
     private String caract;
 
-    private String A;
+    private String spellA;
 
-    private String Z;
+    private String spellZ;
 
-    private String E;
+    private String spellE;
 
-    private String D;
+    private String spellD;
 
     private String talent1;
 
@@ -52,21 +52,6 @@ public class Caracteristique {
         this.role = role;
     }
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    public String getImg_min() {
-        return img_min;
-    }
-
-    public void setImg_min(String img_min) {
-        this.img_min = img_min;
-    }
 
     public String getCaract() {
         return caract;
@@ -84,37 +69,6 @@ public class Caracteristique {
         this.noms = noms;
     }
 
-    public String getA() {
-        return A;
-    }
-
-    public void setA(String a) {
-        A = a;
-    }
-
-    public String getZ() {
-        return Z;
-    }
-
-    public void setZ(String z) {
-        Z = z;
-    }
-
-    public String getE() {
-        return E;
-    }
-
-    public void setE(String e) {
-        E = e;
-    }
-
-    public String getD() {
-        return D;
-    }
-
-    public void setD(String d) {
-        D = d;
-    }
 
     public String getTalent1() {
         return talent1;
@@ -170,6 +124,54 @@ public class Caracteristique {
 
     public void setTalent20(String talent20) {
         this.talent20 = talent20;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getImage_min() {
+        return image_min;
+    }
+
+    public void setImage_min(String image_min) {
+        this.image_min = image_min;
+    }
+
+    public String getSpellA() {
+        return spellA;
+    }
+
+    public void setSpellA(String spellA) {
+        this.spellA = spellA;
+    }
+
+    public String getSpellZ() {
+        return spellZ;
+    }
+
+    public void setSpellZ(String spellZ) {
+        this.spellZ = spellZ;
+    }
+
+    public String getSpellE() {
+        return spellE;
+    }
+
+    public void setSpellE(String spellE) {
+        this.spellE = spellE;
+    }
+
+    public String getSpellD() {
+        return spellD;
+    }
+
+    public void setSpellD(String spellD) {
+        this.spellD = spellD;
     }
 }
 
