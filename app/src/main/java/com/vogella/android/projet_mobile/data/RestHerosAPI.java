@@ -1,4 +1,6 @@
-package com.vogella.android.projet_mobile.model;
+package com.vogella.android.projet_mobile.data;
+
+import com.vogella.android.projet_mobile.model.RestHerosResponse;
 
 import java.util.List;
 

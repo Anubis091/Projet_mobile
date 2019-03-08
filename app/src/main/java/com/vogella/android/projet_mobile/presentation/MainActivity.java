@@ -1,10 +1,13 @@
-package com.vogella.android.projet_mobile;
+package com.vogella.android.projet_mobile.presentation;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.vogella.android.projet_mobile.R;
 import com.vogella.android.projet_mobile.controller.MainController;
 import com.vogella.android.projet_mobile.model.Hero;
 
@@ -34,7 +37,19 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         // define an adapter
-        mAdapter = new MyAdapter(input);
+        mAdapter = new MyAdapter(input, this,getHeroListener());
         recyclerView.setAdapter(mAdapter);
+    }
+
+    private MyAdapter.OnItemClickListener getHeroListener(){
+        return new MyAdapter.OnItemClickListener(){
+            @Override
+            public void onItemClick(Hero item){
+                Intent intent =new Intent(getApplicationContext(),CaracteristiqueActivity.class);
+                Gson gson=new Gson();
+                intent.putExtra("CLE",gson.toJson(item));
+                startActivity(intent);
+            }
+        };
     }
 }

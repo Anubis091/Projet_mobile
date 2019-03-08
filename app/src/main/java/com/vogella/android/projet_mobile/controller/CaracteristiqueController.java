@@ -4,13 +4,10 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.vogella.android.projet_mobile.CaracteristiqueActivity;
-import com.vogella.android.projet_mobile.model.Caracteristique;
+import com.vogella.android.projet_mobile.presentation.CaracteristiqueActivity;
 import com.vogella.android.projet_mobile.model.Hero;
-import com.vogella.android.projet_mobile.model.RestCaracteristiqueAPI;
+import com.vogella.android.projet_mobile.data.RestCaracteristiqueAPI;
 import com.vogella.android.projet_mobile.model.RestCaracteristiqueResponse;
-import com.vogella.android.projet_mobile.model.RestHerosAPI;
-import com.vogella.android.projet_mobile.model.RestHerosResponse;
 
 import java.util.List;
 
@@ -27,13 +24,13 @@ public class CaracteristiqueController {
         this.activity = caracteristiqueActivity;
     }
     public void onStart(){
-
+    Hero hero = new Hero();
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://menfoutiste.000webhostapp.com/api/") //a modifier
+                .baseUrl(hero.getUrl())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 

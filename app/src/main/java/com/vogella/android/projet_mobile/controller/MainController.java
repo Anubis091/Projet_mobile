@@ -4,9 +4,9 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.vogella.android.projet_mobile.MainActivity;
+import com.vogella.android.projet_mobile.presentation.MainActivity;
 import com.vogella.android.projet_mobile.model.Hero;
-import com.vogella.android.projet_mobile.model.RestHerosAPI;
+import com.vogella.android.projet_mobile.data.RestHerosAPI;
 import com.vogella.android.projet_mobile.model.RestHerosResponse;
 
 import java.util.List;

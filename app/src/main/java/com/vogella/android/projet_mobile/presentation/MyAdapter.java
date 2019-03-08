@@ -1,18 +1,28 @@
-package com.vogella.android.projet_mobile;
+package com.vogella.android.projet_mobile.presentation;
 
+import java.util.List;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.vogella.android.projet_mobile.R;
 import com.vogella.android.projet_mobile.model.Hero;
 
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
+    private  final OnItemClickListener listener;
+    private Context context;
     private List<Hero> listValues;
+
+    public interface OnItemClickListener{
+        void onItemClick(Hero item);
+    }
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -45,8 +55,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<Hero> listValues) {
+    public MyAdapter(List<Hero> listValues, Context context, OnItemClickListener listener) {
         this.listValues = listValues;
+        this.context=context;
+        this.listener=listener;
     }
 
     // Create new views (invoked by the layout manager)
@@ -66,17 +78,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
     public void onBindViewHolder(CelluleJava holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        Hero currentPokemon = listValues.get(position);
-        final String name = currentPokemon.getName();
+        final Hero currentHero = listValues.get(position);
+
+        final String name = currentHero.getName();
         holder.txtHeader.setText(name);
-        holder.txtHeader.setOnClickListener(new View.OnClickListener() {
+        holder.txtFooter.setText("Footer: " + name);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                remove(position);
+                listener.onItemClick(currentHero);
             }
         });
 
-        holder.txtFooter.setText("Footer: " + name);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
