@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.vogella.android.projet_mobile.model.Caracteristique;
 import com.vogella.android.projet_mobile.presentation.CaracteristiqueActivity;
 import com.vogella.android.projet_mobile.model.Hero;
 import com.vogella.android.projet_mobile.data.RestCaracteristiqueAPI;
@@ -36,14 +37,30 @@ public class CaracteristiqueController {
 
         RestCaracteristiqueAPI restCaracteristiqueAPI= retrofit.create(RestCaracteristiqueAPI.class);
 
-        Call<RestCaracteristiqueResponse> call = restCaracteristiqueAPI .getCaracteristique();
+        Call<RestCaracteristiqueResponse> call = restCaracteristiqueAPI .getCaracter();
         call.enqueue(new Callback<RestCaracteristiqueResponse>() {
             @Override
-            public void onResponse(Call<RestCaracteristiqueResponse> call,
+            public void onResponse(Call<RestCaracteristiqueResponse> callCaracteristique,
                                    Response<RestCaracteristiqueResponse> response) {
                 RestCaracteristiqueResponse restCaracteristiqueResponse = response.body();
-                List<Hero> listHero= restCaracteristiqueResponse.getCaracteristiques();
-                activity.showList(listHero);
+               String id= restCaracteristiqueResponse.getId();
+               String classe=restCaracteristiqueResponse.getClasse();
+               String img=restCaracteristiqueResponse.getImg();
+               String img_min=restCaracteristiqueResponse.getImg_min();
+               String caracteristique=restCaracteristiqueResponse.getCaracteristiques();
+               String nom=restCaracteristiqueResponse.getNom();
+               String A=restCaracteristiqueResponse.getA();
+               String Z=restCaracteristiqueResponse.getZ();
+               String E=restCaracteristiqueResponse.getE();
+               String D=restCaracteristiqueResponse.getD();
+               String talent1=restCaracteristiqueResponse.getTalents1();
+               String talent4=restCaracteristiqueResponse.getTalents4();
+               String talent7=restCaracteristiqueResponse.getTalents7();
+               String talent10=restCaracteristiqueResponse.getTalents10();
+               String talent13=restCaracteristiqueResponse.getTalents13();
+               String talent16=restCaracteristiqueResponse.getTalents16();
+               String talent20=restCaracteristiqueResponse.getTalents20();
+                activity.showList(caracteristique);
             }
 
             @Override

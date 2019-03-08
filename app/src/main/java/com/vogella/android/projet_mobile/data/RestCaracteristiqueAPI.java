@@ -7,5 +7,5 @@ import retrofit2.http.GET;
 
 public interface RestCaracteristiqueAPI {
     @GET("")
-    Call<RestCaracteristiqueResponse> getCaracteristique();
+    Call<RestCaracteristiqueResponse> getCaracter();
 }
