@@ -21,6 +21,8 @@ public class RestHerosResponse {
     public void setResults(List<Hero> results) {
         this.results = results;
     }
+
+
 }
 
 

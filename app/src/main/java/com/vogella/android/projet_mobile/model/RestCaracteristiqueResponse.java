@@ -1,56 +1,68 @@
 package com.vogella.android.projet_mobile.model;
 
-import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class RestCaracteristiqueResponse {
 
-    private String id;
+    private String nom;
 
-    private String classe;
+    private int role;
+
+    private int solo;
+
+    private String lastup_h;
+
+    private int id;
+
+    private int classe;
 
     private String img;
 
     private String img_min;
 
-    private String caracteristiques;
+    private JSONObject caracteristiques;
 
-    private String nom;
+   /* private JSONArray talents1;
 
-    private String A;
+   private JSONArray autres;
 
-    private String Z;
 
-    private String E;
 
-    private String D;
+    private JSONObject A;
 
-    private String talents1;
+    private JSONObject Z;
 
-    private String talents4;
+    private JSONObject E;
 
-    private String talents7;
+    private JSONObject D;
 
-    private String talents10;
 
-    private String talents13;
+    private JSONArray talents4;
 
-    private String talents16;
+    private JSONArray talents7;
 
-    private String talents20;
+    private JSONArray talents10;
 
-    public String getId() {
+    private JSONArray talents13;
+
+    private JSONArray talents16;
+
+    private JSONArray talents20;*/
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getClasse() {
+    public int getClasse() {
         return classe;
     }
 
-    public void setClasse(String classe) {
+    public void setClasse(int classe) {
         this.classe = classe;
     }
 
@@ -70,13 +82,6 @@ public class RestCaracteristiqueResponse {
         this.img_min = img_min;
     }
 
-    public String getCaracteristiques() {
-        return caracteristiques;
-    }
-
-    public void setCaracteristiques(String caracteristiques) {
-        this.caracteristiques = caracteristiques;
-    }
 
     public String getNom() {
         return nom;
@@ -86,91 +91,136 @@ public class RestCaracteristiqueResponse {
         this.nom = nom;
     }
 
-    public String getA() {
-        return A;
+   public JSONObject getCaracteristiques() {
+        return caracteristiques;
     }
 
-    public void setA(String a) {
-        A = a;
+    public void setCaracteristiques(JSONObject caracteristiques) {
+        this.caracteristiques = caracteristiques;
     }
-
-    public String getZ() {
-        return Z;
-    }
-
-    public void setZ(String z) {
-        Z = z;
-    }
-
-    public String getE() {
-        return E;
-    }
-
-    public void setE(String e) {
-        E = e;
-    }
-
-    public String getD() {
-        return D;
-    }
-
-    public void setD(String d) {
-        D = d;
-    }
-
-    public String getTalents1() {
+    /*
+    public JSONArray getTalents1() {
         return talents1;
     }
 
-    public void setTalents1(String talents1) {
+    public void setTalents1(JSONArray talents1) {
         this.talents1 = talents1;
     }
 
-    public String getTalents4() {
+    public JSONObject getA() {
+        return A;
+    }
+
+    public void setA(JSONObject a) {
+        A = a;
+    }
+
+    public JSONObject getZ() {
+        return Z;
+    }
+
+    public void setZ(JSONObject z) {
+        Z = z;
+    }
+
+    public JSONObject getE() {
+        return E;
+    }
+
+    public void setE(JSONObject e) {
+        E = e;
+    }
+
+    public JSONObject getD() {
+        return D;
+    }
+
+    public void setD(JSONObject d) {
+        D = d;
+    }
+
+
+
+    public JSONArray getTalents4() {
         return talents4;
     }
 
-    public void setTalents4(String talents4) {
+    public void setTalents4(JSONArray talents4) {
         this.talents4 = talents4;
     }
 
-    public String getTalents7() {
+    public JSONArray getTalents7() {
         return talents7;
     }
 
-    public void setTalents7(String talents7) {
+    public void setTalents7(JSONArray talents7) {
         this.talents7 = talents7;
     }
 
-    public String getTalents10() {
+    public JSONArray getTalents10() {
         return talents10;
     }
 
-    public void setTalents10(String talents10) {
+    public void setTalents10(JSONArray talents10) {
         this.talents10 = talents10;
     }
 
-    public String getTalents13() {
+    public JSONArray getTalents13() {
         return talents13;
     }
 
-    public void setTalents13(String talents13) {
+    public void setTalents13(JSONArray talents13) {
         this.talents13 = talents13;
     }
 
-    public String getTalents16() {
+    public JSONArray getTalents16() {
         return talents16;
     }
 
-    public void setTalents16(String talents16) {
+    public void setTalents16(JSONArray talents16) {
         this.talents16 = talents16;
     }
 
-    public String getTalents20() {
+    public JSONArray getTalents20() {
         return talents20;
     }
 
-    public void setTalents20(String talents20) {
+    public void setTalents20(JSONArray talents20) {
         this.talents20 = talents20;
     }
+
+    public JSONArray getAutres() {
+        return autres;
+    }
+
+    public void setAutres(JSONArray autres) {
+        this.autres = autres;
+    }
+*/
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
+    public int getSolo() {
+        return solo;
+    }
+
+    public void setSolo(int solo) {
+        this.solo = solo;
+    }
+
+    public String getLastup_h() {
+        return lastup_h;
+    }
+
+    public void setLastup_h(String lastup_h) {
+        this.lastup_h = lastup_h;
+    }
+
 }
+
+

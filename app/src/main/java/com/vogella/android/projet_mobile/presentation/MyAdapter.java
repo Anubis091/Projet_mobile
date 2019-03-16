@@ -81,14 +81,36 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
         final Hero currentHero = listValues.get(position);
 
         final String name = currentHero.getName();
+        final String classe=Classe_reel(currentHero.getClasse());
         holder.txtHeader.setText(name);
-        holder.txtFooter.setText("Footer: " + name);
+        holder.txtFooter.setText("Classe: " + classe);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 listener.onItemClick(currentHero);
             }
         });
+
+    }
+    public String Classe_reel(int classe){
+
+        if (classe==0 || classe==4){
+            return "Guerrier";
+
+        }
+        else if (classe==1){
+            return "Support";
+        }
+
+        else if (classe==2){
+            return "Assassin";
+        }
+
+        else if (classe==3){
+            return "Spécialiste";
+        }
+        return "";
+
 
     }
 

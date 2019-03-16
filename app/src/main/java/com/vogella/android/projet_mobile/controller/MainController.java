@@ -9,6 +9,7 @@ import com.vogella.android.projet_mobile.model.Hero;
 import com.vogella.android.projet_mobile.data.RestHerosAPI;
 import com.vogella.android.projet_mobile.model.RestHerosResponse;
 
+import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;

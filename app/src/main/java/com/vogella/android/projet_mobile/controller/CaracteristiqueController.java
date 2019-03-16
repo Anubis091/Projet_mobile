@@ -4,13 +4,14 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.vogella.android.projet_mobile.model.Caracteristique;
+import com.vogella.android.projet_mobile.data.RestHerosAPI;
 import com.vogella.android.projet_mobile.presentation.CaracteristiqueActivity;
 import com.vogella.android.projet_mobile.model.Hero;
-import com.vogella.android.projet_mobile.data.RestCaracteristiqueAPI;
 import com.vogella.android.projet_mobile.model.RestCaracteristiqueResponse;
 
-import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,43 +25,51 @@ public class CaracteristiqueController {
     public CaracteristiqueController(CaracteristiqueActivity caracteristiqueActivity) {
         this.activity = caracteristiqueActivity;
     }
-    public void onStart(){
-    Hero hero = new Hero();
+    public void onStart(Hero hero){
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(hero.getUrl())
+                .baseUrl("http://menfoutiste.000webhostapp.com/api/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-        RestCaracteristiqueAPI restCaracteristiqueAPI= retrofit.create(RestCaracteristiqueAPI.class);
+        RestHerosAPI restHerosAPI= retrofit.create(RestHerosAPI.class);
 
-        Call<RestCaracteristiqueResponse> call = restCaracteristiqueAPI .getCaracter();
+        Call<RestCaracteristiqueResponse> call = restHerosAPI.getCaracter(hero.getId());
         call.enqueue(new Callback<RestCaracteristiqueResponse>() {
             @Override
             public void onResponse(Call<RestCaracteristiqueResponse> callCaracteristique,
                                    Response<RestCaracteristiqueResponse> response) {
                 RestCaracteristiqueResponse restCaracteristiqueResponse = response.body();
-               String id= restCaracteristiqueResponse.getId();
-               String classe=restCaracteristiqueResponse.getClasse();
-               String img=restCaracteristiqueResponse.getImg();
-               String img_min=restCaracteristiqueResponse.getImg_min();
-               String caracteristique=restCaracteristiqueResponse.getCaracteristiques();
+               int id= restCaracteristiqueResponse.getId();
+               int classe=restCaracteristiqueResponse.getClasse();
                String nom=restCaracteristiqueResponse.getNom();
-               String A=restCaracteristiqueResponse.getA();
-               String Z=restCaracteristiqueResponse.getZ();
-               String E=restCaracteristiqueResponse.getE();
-               String D=restCaracteristiqueResponse.getD();
-               String talent1=restCaracteristiqueResponse.getTalents1();
-               String talent4=restCaracteristiqueResponse.getTalents4();
-               String talent7=restCaracteristiqueResponse.getTalents7();
-               String talent10=restCaracteristiqueResponse.getTalents10();
-               String talent13=restCaracteristiqueResponse.getTalents13();
-               String talent16=restCaracteristiqueResponse.getTalents16();
-               String talent20=restCaracteristiqueResponse.getTalents20();
-                activity.showList(caracteristique);
+                String img=restCaracteristiqueResponse.getImg();
+                String img_min=restCaracteristiqueResponse.getImg_min();
+                JSONObject caracteristique=restCaracteristiqueResponse.getCaracteristiques();
+
+               /* JSONArray talent1=restCaracteristiqueResponse.getTalents1();
+               JSONObject A=restCaracteristiqueResponse.getA();
+               JSONObject Z=restCaracteristiqueResponse.getZ();
+               JSONObject E=restCaracteristiqueResponse.getE();
+               JSONObject D=restCaracteristiqueResponse.getD();
+
+               JSONArray talent4=restCaracteristiqueResponse.getTalents4();
+               JSONArray talent7=restCaracteristiqueResponse.getTalents7();
+               JSONArray talent10=restCaracteristiqueResponse.getTalents10();
+               JSONArray talent13=restCaracteristiqueResponse.getTalents13();
+               JSONArray talent16=restCaracteristiqueResponse.getTalents16();
+               JSONArray talent20=restCaracteristiqueResponse.getTalents20();
+               */
+               
+                try {
+                    activity.showDetail(restCaracteristiqueResponse);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             }
 
             @Override
