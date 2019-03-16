@@ -1,9 +1,8 @@
 package com.vogella.android.projet_mobile.presentation;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -11,10 +10,6 @@ import com.vogella.android.projet_mobile.R;
 import com.vogella.android.projet_mobile.controller.CaracteristiqueController;
 import com.vogella.android.projet_mobile.model.Hero;
 import com.vogella.android.projet_mobile.model.RestCaracteristiqueResponse;
-
-import org.json.JSONException;
-
-import java.util.List;
 
 public class CaracteristiqueActivity extends AppCompatActivity {
     private CaracteristiqueController controller;
@@ -34,10 +29,11 @@ public class CaracteristiqueActivity extends AppCompatActivity {
         controller.onStart(hero);
 
     }
-    public void showDetail(RestCaracteristiqueResponse input) throws JSONException {
-        double a=input.getCaracteristiques().getDouble("aps");
-        txt.setText(input.getNom()+"\n"+input.getId()+"\n"+a);
 
+    public void showDetail(RestCaracteristiqueResponse input) {
+        String a= input.getA().getDescription();
+        txt.setText(input.getNom()+"\n"+input.getId()+"\n"+input.getCaracteristiques().getDps()+"\n"+input.getA().getImage()
+        +"\n"+ Html.fromHtml(a));
 
 
 

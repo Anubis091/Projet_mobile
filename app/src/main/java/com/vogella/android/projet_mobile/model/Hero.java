@@ -9,6 +9,8 @@ public class Hero {
 
     private int classe;
 
+    private String img_min;
+
     public String getName() {
         return name;
     }
@@ -39,6 +41,14 @@ public class Hero {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getImg_min() {
+        return img_min;
+    }
+
+    public void setImg_min(String img_min) {
+        this.img_min = img_min;
     }
 }
 

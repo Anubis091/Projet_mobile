@@ -5,13 +5,9 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.vogella.android.projet_mobile.data.RestHerosAPI;
-import com.vogella.android.projet_mobile.presentation.CaracteristiqueActivity;
 import com.vogella.android.projet_mobile.model.Hero;
 import com.vogella.android.projet_mobile.model.RestCaracteristiqueResponse;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.vogella.android.projet_mobile.presentation.CaracteristiqueActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,32 +39,9 @@ public class CaracteristiqueController {
             public void onResponse(Call<RestCaracteristiqueResponse> callCaracteristique,
                                    Response<RestCaracteristiqueResponse> response) {
                 RestCaracteristiqueResponse restCaracteristiqueResponse = response.body();
-               int id= restCaracteristiqueResponse.getId();
-               int classe=restCaracteristiqueResponse.getClasse();
-               String nom=restCaracteristiqueResponse.getNom();
-                String img=restCaracteristiqueResponse.getImg();
-                String img_min=restCaracteristiqueResponse.getImg_min();
-                JSONObject caracteristique=restCaracteristiqueResponse.getCaracteristiques();
 
-               /* JSONArray talent1=restCaracteristiqueResponse.getTalents1();
-               JSONObject A=restCaracteristiqueResponse.getA();
-               JSONObject Z=restCaracteristiqueResponse.getZ();
-               JSONObject E=restCaracteristiqueResponse.getE();
-               JSONObject D=restCaracteristiqueResponse.getD();
+              activity.showDetail(restCaracteristiqueResponse);
 
-               JSONArray talent4=restCaracteristiqueResponse.getTalents4();
-               JSONArray talent7=restCaracteristiqueResponse.getTalents7();
-               JSONArray talent10=restCaracteristiqueResponse.getTalents10();
-               JSONArray talent13=restCaracteristiqueResponse.getTalents13();
-               JSONArray talent16=restCaracteristiqueResponse.getTalents16();
-               JSONArray talent20=restCaracteristiqueResponse.getTalents20();
-               */
-               
-                try {
-                    activity.showDetail(restCaracteristiqueResponse);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
 
             }
 

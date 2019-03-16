@@ -1,7 +1,8 @@
 package com.vogella.android.projet_mobile.model;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
+
+import java.util.List;
 
 public class RestCaracteristiqueResponse {
 
@@ -21,34 +22,29 @@ public class RestCaracteristiqueResponse {
 
     private String img_min;
 
-    private JSONObject caracteristiques;
+    private Caracteristiques caracteristiques;
 
-   /* private JSONArray talents1;
+    private Spell A;
 
-   private JSONArray autres;
+    private Spell Z;
 
+    private Spell E;
 
+    private Spell D;
 
-    private JSONObject A;
+    private List<Talent> talents1;
 
-    private JSONObject Z;
+    private List<Talent> talents4;
 
-    private JSONObject E;
+    private List<Talent> talents7;
 
-    private JSONObject D;
+    private List<Talent> talents10;
 
+    private List<Talent> talents13;
 
-    private JSONArray talents4;
+    private List<Talent> talents16;
 
-    private JSONArray talents7;
-
-    private JSONArray talents10;
-
-    private JSONArray talents13;
-
-    private JSONArray talents16;
-
-    private JSONArray talents20;*/
+    private List<Talent> talents20;
 
     public int getId() {
         return id;
@@ -91,112 +87,15 @@ public class RestCaracteristiqueResponse {
         this.nom = nom;
     }
 
-   public JSONObject getCaracteristiques() {
+   public Caracteristiques getCaracteristiques() {
         return caracteristiques;
     }
 
-    public void setCaracteristiques(JSONObject caracteristiques) {
+    public void setCaracteristiques(Caracteristiques caracteristiques) {
         this.caracteristiques = caracteristiques;
     }
-    /*
-    public JSONArray getTalents1() {
-        return talents1;
-    }
-
-    public void setTalents1(JSONArray talents1) {
-        this.talents1 = talents1;
-    }
-
-    public JSONObject getA() {
-        return A;
-    }
-
-    public void setA(JSONObject a) {
-        A = a;
-    }
-
-    public JSONObject getZ() {
-        return Z;
-    }
-
-    public void setZ(JSONObject z) {
-        Z = z;
-    }
-
-    public JSONObject getE() {
-        return E;
-    }
-
-    public void setE(JSONObject e) {
-        E = e;
-    }
-
-    public JSONObject getD() {
-        return D;
-    }
-
-    public void setD(JSONObject d) {
-        D = d;
-    }
 
 
-
-    public JSONArray getTalents4() {
-        return talents4;
-    }
-
-    public void setTalents4(JSONArray talents4) {
-        this.talents4 = talents4;
-    }
-
-    public JSONArray getTalents7() {
-        return talents7;
-    }
-
-    public void setTalents7(JSONArray talents7) {
-        this.talents7 = talents7;
-    }
-
-    public JSONArray getTalents10() {
-        return talents10;
-    }
-
-    public void setTalents10(JSONArray talents10) {
-        this.talents10 = talents10;
-    }
-
-    public JSONArray getTalents13() {
-        return talents13;
-    }
-
-    public void setTalents13(JSONArray talents13) {
-        this.talents13 = talents13;
-    }
-
-    public JSONArray getTalents16() {
-        return talents16;
-    }
-
-    public void setTalents16(JSONArray talents16) {
-        this.talents16 = talents16;
-    }
-
-    public JSONArray getTalents20() {
-        return talents20;
-    }
-
-    public void setTalents20(JSONArray talents20) {
-        this.talents20 = talents20;
-    }
-
-    public JSONArray getAutres() {
-        return autres;
-    }
-
-    public void setAutres(JSONArray autres) {
-        this.autres = autres;
-    }
-*/
     public int getRole() {
         return role;
     }
@@ -221,6 +120,93 @@ public class RestCaracteristiqueResponse {
         this.lastup_h = lastup_h;
     }
 
+    public Spell getA() {
+        return A;
+    }
+
+    public void setA(Spell a) {
+        A = a;
+    }
+
+    public Spell getZ() {
+        return Z;
+    }
+
+    public void setZ(Spell z) {
+        Z = z;
+    }
+
+    public Spell getE() {
+        return E;
+    }
+
+    public void setE(Spell e) {
+        E = e;
+    }
+
+    public Spell getD() {
+        return D;
+    }
+
+    public void setD(Spell d) {
+        D = d;
+    }
+
+    public List<Talent> getTalents1() {
+        return talents1;
+    }
+
+    public void setTalents1(List<Talent> talents1) {
+        this.talents1 = talents1;
+    }
+
+    public List<Talent> getTalents4() {
+        return talents4;
+    }
+
+    public void setTalents4(List<Talent> talents4) {
+        this.talents4 = talents4;
+    }
+
+    public List<Talent> getTalents7() {
+        return talents7;
+    }
+
+    public void setTalents7(List<Talent> talents7) {
+        this.talents7 = talents7;
+    }
+
+    public List<Talent> getTalents10() {
+        return talents10;
+    }
+
+    public void setTalents10(List<Talent> talents10) {
+        this.talents10 = talents10;
+    }
+
+    public List<Talent> getTalents13() {
+        return talents13;
+    }
+
+    public void setTalents13(List<Talent> talents13) {
+        this.talents13 = talents13;
+    }
+
+    public List<Talent> getTalents16() {
+        return talents16;
+    }
+
+    public void setTalents16(List<Talent> talents16) {
+        this.talents16 = talents16;
+    }
+
+    public List<Talent> getTalents20() {
+        return talents20;
+    }
+
+    public void setTalents20(List<Talent> talents20) {
+        this.talents20 = talents20;
+    }
 }
 
 
