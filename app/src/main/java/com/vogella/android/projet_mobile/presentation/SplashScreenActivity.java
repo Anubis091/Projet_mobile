@@ -7,7 +7,7 @@ import android.os.Handler;
 
 import com.vogella.android.projet_mobile.R;
 
-public class SplashScreen extends Activity {
+public class SplashScreenActivity extends Activity {
     private static int SPLASH_TIME_OUT=3000;
 
     @Override
@@ -20,7 +20,7 @@ public class SplashScreen extends Activity {
 
             @Override
             public void run() {
-                Intent i = new Intent(SplashScreen.this, MainActivity.class);
+                Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
                 startActivity(i);
                 finish();
             }

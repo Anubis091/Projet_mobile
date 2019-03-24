@@ -1,8 +1,8 @@
 package com.vogella.android.projet_mobile.presentation;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -29,8 +29,21 @@ public class MainActivity extends AppCompatActivity {
 
         controller = new MainController(this);
         controller.onStart();
+
+
+
     }
 
+    /*public void warrior(List<Hero> input) {
+        List<Hero> warrior = null;
+        for(Hero i : input){
+            if(Hero.getClasse()==0){
+                warrior.add(i);
+            }
+        }
+        showList(warrior);
+
+    }*/
     public void showList(List<Hero> input){
         recyclerView.setHasFixedSize(true);
         // use a linear layout manager
@@ -52,4 +65,5 @@ public class MainActivity extends AppCompatActivity {
             }
         };
     }
+
 }

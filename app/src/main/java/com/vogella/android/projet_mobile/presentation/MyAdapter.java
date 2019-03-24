@@ -1,15 +1,14 @@
 package com.vogella.android.projet_mobile.presentation;
 
-import java.util.List;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.vogella.android.projet_mobile.R;
 import com.vogella.android.projet_mobile.model.Hero;
 
@@ -27,7 +26,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    public class CelluleJava extends RecyclerView.ViewHolder {
+    public static class CelluleJava extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView txtHeader;
         public TextView txtFooter;
@@ -38,21 +37,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
         public CelluleJava(View v) {
             super(v);
             layout = v;
-            txtHeader = (TextView) v.findViewById(R.id.firstLine);
-            txtFooter = (TextView) v.findViewById(R.id.secondLine);
+            txtHeader =  v.findViewById(R.id.firstLine);
+            txtFooter =  v.findViewById(R.id.secondLine);
             image = v.findViewById(R.id.icon);
         }
     }
 
-    public void add(int position, Hero item) {
-        listValues.add(position, item);
-        notifyItemInserted(position);
-    }
 
-    public void remove(int position) {
-        listValues.remove(position);
-        notifyItemRemoved(position);
-    }
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public MyAdapter(List<Hero> listValues, Context context, OnItemClickListener listener) {
@@ -82,6 +73,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
 
         final String name = currentHero.getName();
         final String classe=Classe_reel(currentHero.getClasse());
+
         holder.txtHeader.setText(name);
         holder.txtFooter.setText("Classe: " + classe);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +82,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
                 listener.onItemClick(currentHero);
             }
         });
-
+        Picasso.with(context).load(currentHero.getImg_min()).resize(104,201).into(holder.image);
     }
     public String Classe_reel(int classe){
 

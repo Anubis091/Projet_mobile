@@ -9,7 +9,7 @@
         android:id="@+id/imgLogo"
         android:layout_width="400dp"
         android:layout_height="match_parent"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/splash_screen" />
 
 </RelativeLayout>
