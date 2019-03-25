@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private MainController controller;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,16 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /*public void warrior(List<Hero> input) {
-        List<Hero> warrior = null;
-        for(Hero i : input){
-            if(Hero.getClasse()==0){
-                warrior.add(i);
-            }
-        }
-        showList(warrior);
-
-    }*/
     public void showList(List<Hero> input){
         recyclerView.setHasFixedSize(true);
         // use a linear layout manager
