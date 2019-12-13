@@ -1,6 +1,7 @@
 package com.vogella.android.projet_mobile.presentation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -25,18 +26,21 @@ import java.util.List;
 
 public class TileContentFragment extends Fragment {
     List<Hero> dataFromApi;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        Type collectionType = new TypeToken<List<Hero>>(){}.getType();
+        Type collectionType = new TypeToken<List<Hero>>() {
+        }.getType();
         //
         Bundle dataBundle = getArguments();
         dataFromApi = new Gson().fromJson(dataBundle.getString("Key1"), collectionType);
 
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.recycler_view, container, false);
-        ContentAdapter adapter = new ContentAdapter(recyclerView.getContext(), dataFromApi);
+        ContentAdapter adapter = new ContentAdapter(recyclerView.getContext(), dataFromApi, getHeroListener());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         // Set padding for Tiles
@@ -57,6 +61,7 @@ public class TileContentFragment extends Fragment {
             name = (TextView) itemView.findViewById(R.id.tile_title);
         }
     }
+
     /**
      * Adapter to display recycler view.
      */
@@ -65,11 +70,19 @@ public class TileContentFragment extends Fragment {
         //private static final int LENGTH = 18;
         Context context;
         List<Hero> dataFromApi;
-       /* private final String[] mPlaces;
-        private final Drawable[] mPlacePictures;*/
-        public ContentAdapter(Context context, List<Hero> input) {
-            this.dataFromApi=input;
+        private  final ContentAdapter.OnItemClickListener listener;
+
+
+        public interface OnItemClickListener {
+            void onItemClick(Hero item);
+        }
+
+        /* private final String[] mPlaces;
+         private final Drawable[] mPlacePictures;*/
+        public ContentAdapter(Context context, List<Hero> input, OnItemClickListener heroListener) {
+            this.dataFromApi = input;
             Resources resources = context.getResources();
+            this.listener = heroListener;
             /*
             mPlaces = resources.getStringArray(R.array.places);
             TypedArray a = resources.obtainTypedArray(R.array.places_picture);
@@ -87,9 +100,15 @@ public class TileContentFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            Hero current_Hero=dataFromApi.get(position);
+            final Hero current_Hero = dataFromApi.get(position);
             Picasso.with(holder.context).load(current_Hero.getImg_min()).into(holder.picture);
             holder.name.setText(current_Hero.getName());
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(current_Hero);
+                }
+            });
            /* holder.picture.setImageDrawable(mPlacePictures[position % mPlacePictures.length]);
             holder.name.setText(mPlaces[position % mPlaces.length]); */
         }
@@ -98,5 +117,17 @@ public class TileContentFragment extends Fragment {
         public int getItemCount() {
             return dataFromApi.size();
         }
+    }
+
+    private ContentAdapter.OnItemClickListener getHeroListener() {
+        return new ContentAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Hero item) {
+                Intent intent = new Intent(getContext(), CaracteristiqueActivity.class);
+                Gson gson = new Gson();
+                intent.putExtra("CLE", gson.toJson(item));
+                startActivity(intent);
+            }
+        };
     }
 }
