@@ -48,7 +48,6 @@ public class CaracteristiqueActivity extends AppCompatActivity{
     private TextView caracteristique;
     private TextView SpellA;
     private TextView SpellZ;
-    private TextView SpellE;
     private TextView SpellD;
     private TextView titleTalent;
     private TextView titleSort;
