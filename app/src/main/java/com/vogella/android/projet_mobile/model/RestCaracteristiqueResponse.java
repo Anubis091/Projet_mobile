@@ -46,6 +46,8 @@ public class RestCaracteristiqueResponse {
 
     private List<Talent> talents20;
 
+    private String guide;
+
     public int getId() {
         return id;
     }
@@ -206,6 +208,14 @@ public class RestCaracteristiqueResponse {
 
     public void setTalents20(List<Talent> talents20) {
         this.talents20 = talents20;
+    }
+
+    public String getGuide() {
+        return guide;
+    }
+
+    public void setGuide(String guide) {
+        this.guide = guide;
     }
 }
 

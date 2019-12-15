@@ -26,7 +26,8 @@
 
     </activity>
         <activity android:name=".presentation.CaracteristiqueActivity"
-            android:label="Caractéristiques">
+            android:label="Caractéristiques"
+            >
 
 
         </activity>

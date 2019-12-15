@@ -10,4 +10,11 @@
         <!-- Blue -->
     </style>
     <style name="AppTheme" parent="AppTheme.Base"></style>
+
+
+
+    <style name="AppTheme.CustomTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
 </resources>
