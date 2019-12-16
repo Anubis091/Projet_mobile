@@ -26,12 +26,17 @@
 
     </activity>
         <activity android:name=".presentation.CaracteristiqueActivity"
-            android:label="Caractéristiques">
+            android:label="Caractéristiques"
+            >
 
 
         </activity>
         <activity android:name=".presentation.MainActivity">
 
+
+        </activity>
+        <activity android:name=".presentation.MapActivity"
+            android:label="Map">
 
         </activity>
 

@@ -39,5 +39,5 @@
         android:gravity="center_vertical"
         android:text="Example application"
         android:textSize="16sp" />
-
+-->
 </RelativeLayout>
