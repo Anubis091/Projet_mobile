@@ -1,6 +1,7 @@
 package com.vogella.android.projet_mobile.presentation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -36,7 +37,7 @@ public class ListContentFragment extends Fragment {
 
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.recycler_view, container, false);
-        ContentAdapter adapter = new ContentAdapter(recyclerView.getContext(), dataFromApi);
+        ContentAdapter adapter = new ContentAdapter(recyclerView.getContext(), dataFromApi, getHeroListener());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -60,6 +61,7 @@ public class ListContentFragment extends Fragment {
      * Adapter to display recycler view.
      */
     public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
+        private final OnItemClickListener listener;
         // Set numbers of List in RecyclerView.
         //private static final int LENGTH = 18;
         Context context;
@@ -67,9 +69,14 @@ public class ListContentFragment extends Fragment {
         /*private final String[] mPlaces;
         private final String[] mPlaceDesc;
         private final Drawable[] mPlaceAvators;*/
-        public ContentAdapter(Context context, List<Hero> input) {
+
+        public interface OnItemClickListener{
+            void onItemClick(Hero item);
+        }
+        public ContentAdapter(Context context, List<Hero> input, OnItemClickListener heroListener) {
             this.dataFromApi = input;
             Resources resources = context.getResources();
+            this.listener=heroListener;
             /*mPlaces = resources.getStringArray(R.;
             mPlaceDesc = resources.getStringArray(R.array.place_desc);
             TypedArray a = resources.obtainTypedArray(R.array.place_avator);
@@ -87,12 +94,18 @@ public class ListContentFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            Hero current_Hero =dataFromApi.get(position);
+            final Hero current_Hero =dataFromApi.get(position);
             final String classe=Classe_reel(current_Hero.getClasse());
 
             Picasso.with(holder.context).load(current_Hero.getImg_min()).into(holder.avator);
             holder.name.setText(current_Hero.getName());
             holder.description.setText("classe: "+ classe);
+            holder.itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    listener.onItemClick(current_Hero);
+                }
+            });
         }
 
         public String Classe_reel(int classe){
@@ -127,6 +140,18 @@ public class ListContentFragment extends Fragment {
         public int getItemCount() {
             return dataFromApi.size();
         }
+    }
+
+    private ContentAdapter.OnItemClickListener getHeroListener(){
+        return new ContentAdapter.OnItemClickListener(){
+            @Override
+            public void onItemClick(Hero item){
+                Intent intent = new Intent(getContext(),CaracteristiqueActivity.class);
+                Gson gson = new Gson();
+                intent.putExtra("CLE",gson.toJson(item));
+                startActivity(intent);
+            }
+        };
     }
 
 }
