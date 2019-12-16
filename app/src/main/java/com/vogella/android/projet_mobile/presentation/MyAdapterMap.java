@@ -14,14 +14,10 @@ import com.vogella.android.projet_mobile.model.Hero;
 
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
-    private  final OnItemClickListener listener;
+public class MyAdapterMap extends RecyclerView.Adapter<MyAdapterMap.CelluleJava> {
     private Context context;
     private List<Hero> listValues;
 
-    public interface OnItemClickListener{
-        void onItemClick(Hero item);
-    }
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -46,27 +42,26 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
 
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<Hero> listValues, Context context, OnItemClickListener listener) {
+    public MyAdapterMap(List<Hero> listValues, Context context) {
         this.listValues = listValues;
         this.context=context;
-        this.listener=listener;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public CelluleJava onCreateViewHolder(ViewGroup parent,
-                                          int viewType) {
+    public MyAdapterMap.CelluleJava onCreateViewHolder(ViewGroup parent,
+                                                    int viewType) {
         // create a new view
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View v = inflater.inflate(R.layout.row_layout, parent, false);
         // set the view's size, margins, paddings and layout parameters
-        CelluleJava vh = new CelluleJava(v);
+        MyAdapterMap.CelluleJava vh = new MyAdapterMap.CelluleJava(v);
         return vh;
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(CelluleJava holder, final int position) {
+    public void onBindViewHolder(MyAdapterMap.CelluleJava holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         final Hero currentHero = listValues.get(position);
@@ -76,12 +71,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
 
         holder.txtHeader.setText(name);
         holder.txtFooter.setText("Classe: " + classe);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onItemClick(currentHero);
-            }
-        });
+
         Picasso.with(context).load(currentHero.getImg_min()).resize(104,201).into(holder.image);
     }
     public String Classe_reel(int classe){
@@ -102,7 +92,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
             return "Soigneur";
         }
         else if (classe==4){
-            return "Assassin mélée";
+            return "Assassin en mélée";
         }
         else if (classe==5){
             return "Assassin distance";

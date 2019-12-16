@@ -40,7 +40,7 @@ public class TileContentFragment extends Fragment {
 
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.recycler_view, container, false);
-        ContentAdapter adapter = new ContentAdapter(recyclerView.getContext(), dataFromApi, getHeroListener());
+        ContentAdapterTileFragment adapter = new ContentAdapterTileFragment(recyclerView.getContext(), dataFromApi, getHeroListener());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         // Set padding for Tiles
@@ -57,70 +57,17 @@ public class TileContentFragment extends Fragment {
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.item_tile, parent, false));
-            picture = (ImageView) itemView.findViewById(R.id.tile_picture);
-            name = (TextView) itemView.findViewById(R.id.tile_title);
+            picture = itemView.findViewById(R.id.tile_picture);
+            name = itemView.findViewById(R.id.tile_title);
         }
     }
 
     /**
      * Adapter to display recycler view.
      */
-    public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
-        // Set numbers of List in RecyclerView.
-        //private static final int LENGTH = 18;
-        Context context;
-        List<Hero> dataFromApi;
-        private  final ContentAdapter.OnItemClickListener listener;
 
-
-        public interface OnItemClickListener {
-            void onItemClick(Hero item);
-        }
-
-        /* private final String[] mPlaces;
-         private final Drawable[] mPlacePictures;*/
-        public ContentAdapter(Context context, List<Hero> input, OnItemClickListener heroListener) {
-            this.dataFromApi = input;
-            Resources resources = context.getResources();
-            this.listener = heroListener;
-            /*
-            mPlaces = resources.getStringArray(R.array.places);
-            TypedArray a = resources.obtainTypedArray(R.array.places_picture);
-            mPlacePictures = new Drawable[a.length()];
-            for (int i = 0; i < mPlacePictures.length; i++) {
-                mPlacePictures[i] = a.getDrawable(i);
-            }
-            a.recycle();*/
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
-        }
-
-        @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            final Hero current_Hero = dataFromApi.get(position);
-            Picasso.with(holder.context).load(current_Hero.getImg_min()).into(holder.picture);
-            holder.name.setText(current_Hero.getName());
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onItemClick(current_Hero);
-                }
-            });
-           /* holder.picture.setImageDrawable(mPlacePictures[position % mPlacePictures.length]);
-            holder.name.setText(mPlaces[position % mPlaces.length]); */
-        }
-
-        @Override
-        public int getItemCount() {
-            return dataFromApi.size();
-        }
-    }
-
-    private ContentAdapter.OnItemClickListener getHeroListener() {
-        return new ContentAdapter.OnItemClickListener() {
+    private ContentAdapterTileFragment.OnItemClickListener getHeroListener() {
+        return new ContentAdapterTileFragment.OnItemClickListener() {
             @Override
             public void onItemClick(Hero item) {
                 Intent intent = new Intent(getContext(), CaracteristiqueActivity.class);

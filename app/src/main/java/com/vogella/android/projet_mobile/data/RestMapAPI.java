@@ -1,19 +1,18 @@
 package com.vogella.android.projet_mobile.data;
 
+import com.vogella.android.projet_mobile.model.RestCaracteristiqueMapResponse;
 import com.vogella.android.projet_mobile.model.RestCaracteristiqueResponse;
-import com.vogella.android.projet_mobile.model.RestHerosResponse;
 import com.vogella.android.projet_mobile.model.RestMapResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
-public interface RestHerosAPI {
-    @GET("get_heros?limit=100")
-    Call<RestHerosResponse> getListHeros();
+public interface RestMapAPI {
 
-    @GET("get_heros/{id}")
-    Call<RestCaracteristiqueResponse> getCaracter(@Path("id") int id);
+    @GET("get_maps")
+    Call<RestMapResponse> getListMap();
 
-
+    @GET("get_maps/{id}")
+    Call<RestCaracteristiqueMapResponse> getMap(@Path("id") int id);
 }

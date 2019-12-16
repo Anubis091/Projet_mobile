@@ -19,18 +19,13 @@ import java.util.List;
 
 public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
 
-   // private  final OnItemClickListener listener;
     private Context context;
     private List<Talent> listValues;
 
-   /* public interface OnItemClickListener{
-        void onItemClick(Talent item);
-    }*/
 
     public class CelluleJava extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView txtHeader;
-        public TextView txtFooter;
+
         public ImageView image;
         public View layout;
 
@@ -38,15 +33,12 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
         public CelluleJava(View v) {
             super(v);
             layout = v;
-           // txtHeader = (TextView) v.findViewById(R.id.firstLine);
-            //txtFooter = (TextView) v.findViewById(R.id.secondLine);
             image = v.findViewById(R.id.icon);
         }
     }
     public MyAdapter2(List<Talent> listValues, Context context){
         this.listValues=listValues;
         this.context=context;
-      //  this.listener=listener;
     }
     @Override
     public MyAdapter.CelluleJava onCreateViewHolder(ViewGroup parent,
@@ -68,16 +60,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter.CelluleJava> {
 
         final String name = currentTalent.getNom();
         final String description=currentTalent.getDescription();
-        //final String image=currentTalent.getImage();
 
-        //holder.txtHeader.setText(name);
-       // holder.txtFooter.setText(""+ Html.fromHtml(description));
-      /*  holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onItemClick(currentTalent);
-            }
-        });*/
       holder.image.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {

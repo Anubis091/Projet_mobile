@@ -1,6 +1,5 @@
 package com.vogella.android.projet_mobile.presentation;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -16,6 +15,7 @@ import com.google.gson.Gson;
 import com.vogella.android.projet_mobile.R;
 import com.vogella.android.projet_mobile.controller.MainController;
 import com.vogella.android.projet_mobile.model.Hero;
+import com.vogella.android.projet_mobile.model.Map;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     List<Hero> dataFromApi;
     private MainController controller;
+    List<Map> dataMap;
 
 
     @Override
@@ -51,25 +52,36 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setupViewPager(ViewPager viewPager, List<Hero> input) {
+    private void setupViewPager(ViewPager viewPager, List<Hero> input, List<Map> dataMap) {
         Bundle data = new Bundle();
+        Bundle dataM =new Bundle();
+
+        data.putString("KeyMap", new Gson().toJson(dataMap));
         data.putString("Key1", new Gson().toJson(input));
+
+        CardContentFragment fragCard = new CardContentFragment();
         ListContentFragment fragList = new ListContentFragment();
         TileContentFragment fragTile = new TileContentFragment();
+
+        fragCard.setArguments(data);
+        fragCard.setArguments(data);
         fragList.setArguments(data);
         fragTile.setArguments(data);
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(fragList, "List");
-        adapter.addFragment(fragTile, "Tile");
+        adapter.addFragment(fragList, "Liste des Heros");
+
+        adapter.addFragment(fragTile, "Heros");
+        adapter.addFragment(fragCard, "Maps");
+
         viewPager.setAdapter(adapter);
     }
 
     private void affichage(){
         // Setting ViewPager for each Tabs
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager, dataFromApi);
+        ViewPager viewPager = findViewById(R.id.viewpager);
+        setupViewPager(viewPager, dataFromApi, dataMap);
         // Set Tabs inside Toolbar
-        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
     }
 
@@ -102,34 +114,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /*
-    public void showList(List<Hero> input){
-        // use a linear layout manager
 
-        // define an adapter
-        mAdapter = new MyAdapter(input, this,getHeroListener());
-        recyclerView.setAdapter(mAdapter);
+    public void showMap(List<Map> input){
+        dataMap=input;
     }
 
-  private MyAdapter.OnItemClickListener getHeroListener(){
-        return new MyAdapter.OnItemClickListener(){
-            @Override
-            public void onItemClick(Hero item){
-                Intent intent =new Intent(getApplicationContext(),CaracteristiqueActivity.class);
-                Gson gson=new Gson();
-                intent.putExtra("CLE",gson.toJson(item));
-                startActivity(intent);
-            }
-        }; */
-
     public void showList(List<Hero> input){
+
         dataFromApi = input;
         affichage();
-        /*recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new MyAdapter(input , getListener());
-        recyclerView.setAdapter(mAdapter);*/
+
     }
 
 }

@@ -35,6 +35,10 @@
 
 
         </activity>
+        <activity android:name=".presentation.MapActivity"
+            android:label="Map">
+
+        </activity>
 
 
     </application>
